@@ -1,0 +1,22 @@
+Script started on 2022-06-04 16:01:44+08:00 [TERM="xterm-256color" TTY="/dev/pts/8" COLUMNS="172" LINES="21"]
+]0;root@f13fce7b89b8: /usr/src/approot@f13fce7b89b8:/usr/src/app# [K]0;root@f13fce7b89b8: /usr/src/approot@f13fce7b89b8:/usr/src/app# tail -f ./text.log
+2022-06-04 08:01:34 +0000 UTC
+2022-06-04 08:01:36 +0000 UTC
+2022-06-04 08:01:38 +0000 UTC
+2022-06-04 08:01:40 +0000 UTC
+Secret message is: 'You can find the source code here: https://github.com/docker-hy'
+2022-06-04 08:01:42 +0000 UTC
+2022-06-04 08:01:44 +0000 UTC
+2022-06-04 08:01:46 +0000 UTC
+2022-06-04 08:01:48 +0000 UTC
+2022-06-04 08:01:50 +0000 UTC
+Secret message is: 'You can find the source code here: https://github.com/docker-hy'
+2022-06-04 08:01:52 +0000 UTC
+2022-06-04 08:01:54 +0000 UTC
+2022-06-04 08:01:56 +0000 UTC
+2022-06-04 08:01:58 +0000 UTC
+2022-06-04 08:02:00 +0000 UTC
+^C
+]0;root@f13fce7b89b8: /usr/src/approot@f13fce7b89b8:/usr/src/app# exit
+
+Script done on 2022-06-04 16:02:03+08:00 [COMMAND_EXIT_CODE="130"]
