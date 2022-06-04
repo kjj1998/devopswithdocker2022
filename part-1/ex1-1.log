@@ -1,0 +1,7 @@
+Script started on 2022-06-04 14:20:09+08:00 [TERM="xterm-256color" TTY="/dev/pts/6" COLUMNS="178" LINES="22"]
+CONTAINER ID   IMAGE     COMMAND                  CREATED             STATUS                         PORTS     NAMES
+324a29a2609d   nginx     "/docker-entrypoint.…"   About an hour ago   Exited (0) About an hour ago             angry_dubinsky
+89fdde8fe8c1   nginx     "/docker-entrypoint.…"   About an hour ago   Up About an hour               80/tcp    naughty_kowalevski
+73c274a6cb8d   nginx     "/docker-entrypoint.…"   About an hour ago   Exited (0) About an hour ago             charming_darwin
+
+Script done on 2022-06-04 14:20:09+08:00 [COMMAND_EXIT_CODE="0"]
