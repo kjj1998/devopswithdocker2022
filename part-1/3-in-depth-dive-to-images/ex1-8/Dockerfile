@@ -6,4 +6,4 @@ RUN apt-get update
 RUN apt-get --yes install curl
 RUN chmod +x instructions.sh
 
-CMD ./instructions.sh
+ENTRYPOINT [ "./instructions.sh" ] 
