@@ -2,6 +2,9 @@ FROM ubuntu:focal
 
 WORKDIR /usr/src/app
 
+# To connect to the backend as required in Ex1.14
+ENV REACT_APP_BACKEND_URL="http://localhost:8080"
+
 COPY . .
 
 EXPOSE 5000

@@ -5,8 +5,10 @@ WORKDIR /usr/src/app
 EXPOSE 8080
 
 ENV PORT=8080
-ENV REQUEST_ORIGIN="https://example.com"
 ENV CERT_LOCATION=/usr/local/share/ca-certificates
+
+# CORS whitelisted url to communicate with the frontend as required in ex 1.14
+ENV REQUEST_ORIGIN="http://localhost:5000"
 
 COPY . .
 
