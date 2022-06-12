@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  example-frontend:
+    image: ubuntu:focal
+    build: ./example-frontend
+    ports:
+      - 5000:5000
+    container_name: example-frontend
+  
+  example-backend:
+    image: golang:1.16
+    build: ./example-backend
+    ports:
+      - 8080:8080
+    restart: unless-stopped
+    container_name: example-backend
+    environment:
+      - REDIS_HOST=redis-container
+  
+  redis-container:
+    image: redis:7.0.1
+    command: redis-server
+    ports:
+      - 6379:6379
+    restart: unless-stopped
+    container_name: redis-container

@@ -1,4 +1,4 @@
-# Ex2-3
+# Ex2-4
 
 ## Commands
 follow these commands to set up the docker image
