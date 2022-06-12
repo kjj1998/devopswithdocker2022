@@ -5,5 +5,5 @@ services:
     image: devopsdockeruh/simple-web-service:ubuntu
     build: .
     volumes:
-      - ./text.log:/usr/src/app/text.log
+      - ./text.log:/usr/src/app/text.log 
     container_name: simple-web-service
