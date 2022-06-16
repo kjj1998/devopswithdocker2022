@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  example-frontend:
+    image: frontend
+    build: ./example-frontend
+    ports:
+      - 5000:5000
+    container_name: example-frontend
+  
+  example-backend:
+    image: backend
+    build: ./example-backend
+    ports:
+      - 8080:8080
+    restart: unless-stopped
+    container_name: example-backend
+    environment:
+      - REDIS_HOST=redis-container
+      - POSTGRES_HOST=postgres-container
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DATABASE=postgres
+      - POSTGRES_USER=postgres
+  
+  redis-container:
+    image: redis:7.0.1
+    command: redis-server
+    restart: unless-stopped
+    volumes:
+      - cache:/data
+    container_name: redis-container
+
+  postgres-container:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+      - PGDATA=/var/lib/postgresql/data
+    volumes:
+      - database:/var/lib/postgresql/data
+    container_name: postgres-container
+
+volumes:
+  database
+  cache

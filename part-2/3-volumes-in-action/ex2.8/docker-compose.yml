@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  example-frontend:
+    image: ubuntu:focal
+    build: ./example-frontend
+    ports:
+      - 5000:5000
+    container_name: example-frontend
+  
+  example-backend:
+    image: golang:1.16
+    build: ./example-backend
+    ports:
+      - 8080:8080
+    restart: unless-stopped
+    container_name: example-backend
+    environment:
+      - REDIS_HOST=redis-container
+      - POSTGRES_HOST=postgres-container
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DATABASE=postgres
+      - POSTGRES_USER=postgres
+  
+  redis-container:
+    image: redis:7.0.1
+    command: redis-server
+    restart: unless-stopped
+    container_name: redis-container
+
+  postgres-container:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+    container_name: postgres-container
+  
+  proxy-container:
+    image: nginx
+    container_name: proxy-container
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
