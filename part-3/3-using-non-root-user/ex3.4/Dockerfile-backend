@@ -1,0 +1,28 @@
+FROM golang:1.16
+
+WORKDIR /usr/src/app
+
+EXPOSE 8080
+
+ENV PORT=8080
+ENV CERT_LOCATION=/usr/local/share/ca-certificates
+
+# CORS whitelisted url to communicate with the frontend as required in ex 1.14
+ENV REQUEST_ORIGIN="http://localhost:5000"
+
+COPY . .
+
+RUN apt update && apt install -y ca-certificates openssl && \
+    openssl s_client -showcerts -connect github.com:443 </dev/null 2>/dev/null|openssl x509 -outform PEM > ${CERT_LOCATION}/github.crt && \
+    openssl s_client -showcerts -connect proxy.golang.org:443 </dev/null 2>/dev/null|openssl x509 -outform PEM >  ${CERT_LOCATION}/proxy.golang.crt && \
+    update-ca-certificates && \
+    go build && \
+    go test ./... && \
+    apt-get purge -y --auto-remove openssl && \
+    rm -rf /var/lib/apt/lists/* && \ 
+    useradd -m appuser && \
+    chown appuser /usr/src/app
+
+USER appuser
+
+CMD ["./server", "PORT", "REQUEST_ORIGIN"]
