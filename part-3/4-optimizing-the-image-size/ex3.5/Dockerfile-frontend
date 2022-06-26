@@ -1,0 +1,31 @@
+FROM node:16.15-alpine
+
+WORKDIR /usr/src/app
+
+# To connect to the backend as required in Ex1.14
+ENV REACT_APP_BACKEND_URL="http://localhost:8080"
+
+COPY . .
+
+EXPOSE 5000
+
+# RUN apt update && apt install -y curl ca-certificates && \ 
+#     curl -L https://deb.nodesource.com/setup_16.x | bash - && \
+#     apt install -y nodejs && \
+#     npm install && \
+#     npm run build && \ 
+#     npm install -g serve && \
+#     apt-get purge -y --auto-remove curl && \
+#     rm -rf /var/lib/apt/lists/* && \ 
+#     useradd -m userapp && \ 
+#     chown userapp /usr/src/app
+
+
+RUN npm install && \
+    npm run build && \ 
+    npm install -g serve && \
+    rm -rf /var/lib/apt/lists/*
+
+# USER userapp
+
+CMD ["serve", "-s", "-l", "5000", "build"]
